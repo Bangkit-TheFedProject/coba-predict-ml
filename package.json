@@ -1,0 +1,17 @@
+{
+  "name": "coba-predict",
+  "version": "1.0.0",
+  "description": "tes prediksi ML",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/hapi": "^21.3.2",
+    "@img/sharp-linux-x64": "^0.33.0",
+    "@tensorflow/tfjs-node": "^4.15.0",
+    "sharp": "^0.33.0"
+  }
+}
