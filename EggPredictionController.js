@@ -29,9 +29,14 @@ const EggPredictionController = {
 
             try {
                 const hasilPrediksi = model.predict(tensorGambar.expandDims(0)).squeeze().arraySync();
-                const indexNilaiTertinggi = hasilPrediksi.indexOf(Math.max.apply(null, hasilPrediksi));
+                const totalProbabilitas = hasilPrediksi.reduce((total, probabilitas) => total + probabilitas, 0);
 
-                return h.response({result : className[indexNilaiTertinggi]});
+                const prediksi = hasilPrediksi.map((probabilitas, index) => ({
+                    kelas: className[index],
+                    probabilitas: (probabilitas / totalProbabilitas) * 100 // Menghitung persentase probabilitas
+                }));
+    
+                return h.response({result : prediksi});
 
                 // handling save image-nya disini
             } catch (error) {
